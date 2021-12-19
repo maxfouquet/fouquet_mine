@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="modeles.Ouvrier" table="ouvrier" discriminator-value="0">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <discriminator column="type" type="int" />
+        <property name="nom" type="string">
+            <column name="nom" not-null="true" />
+        </property>
+        <property name="dateAffectationEquipe" type="date">
+            <column name="date_affectation_equipe" not-null="true" />
+        </property>
+        <many-to-one class="modeles.Modele" name="modele" column="id_modele" />
+        <many-to-one class="modeles.Equipe" name="equipe" column="id_equipe" />
+        <subclass name="modeles.Robot" discriminator-value="1">
+        	<property name="numeroSerie" column="numero_serie" />
+		</subclass>
+		<subclass name="modeles.Humain" discriminator-value="2">
+			<property name="salaire" column="salaire" />
+		</subclass>
+   </class>
+</hibernate-mapping>

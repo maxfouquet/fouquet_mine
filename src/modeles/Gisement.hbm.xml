@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="modeles.Gisement" table="gisement" discriminator-value="0">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <discriminator column="type" type="int" />
+        <property name="dateMiseService" type="date">
+            <column name="date_mise_service" not-null="true" />
+        </property>
+        <property name="rendement" type="float">
+            <column name="rendement" not-null="true" />
+        </property>
+        <subclass name="modeles.Bouzon" discriminator-value="1">
+        	<property name="densite" column="densite" />
+		</subclass>
+		<subclass name="modeles.HzK2" discriminator-value="2">
+			<property name="coefficientPurete" column="coefficient_purete" />
+		</subclass>
+   </class>
+</hibernate-mapping>
