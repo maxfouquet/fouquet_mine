@@ -1,6 +1,8 @@
 package modeles;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -43,7 +45,26 @@ public class Gisement{
 	public float getDensite(){return densite;}
 	public void setDensite(float densite){this.densite = densite;}
 	
-	public float calculRentabilite() {
-		return (float) 0.55;
+    @OneToMany(fetch=FetchType.LAZY, targetEntity=Equipe.class, mappedBy="gisement")
+	private Set<Equipe> equipes = new HashSet<Equipe>();
+	public Set<Equipe> getEquipes() {return this.equipes;}
+	public void setEquipes(Set<Equipe> equipes) {this.equipes = equipes;}
+	
+	public float revenu() {
+		return 0;
 	}
+	
+	public float calculRentabilite() {
+		float revenuGisement = 0;
+		float coutMensuelEquipes = 0;
+		float rentabilite = 0;
+		for(Equipe equipe: this.equipes) {
+			Gisement gisement = equipe.getGisement();
+			revenuGisement = gisement.revenu();
+			coutMensuelEquipes += equipe.cout();
+		}
+		rentabilite = revenuGisement - coutMensuelEquipes;
+		return rentabilite;
+	}
+	
 }

@@ -11,10 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 
 import hibernate.Action;
-import modeles.Bouzon;
-import modeles.Gisement;
 import modeles.Modele;
-import modeles.Ouvrier;
 
 /**
  * Servlet implementation class Hibernate
@@ -45,7 +42,7 @@ public class Mine extends HttpServlet {
 			
 			// Afficher la liste des gisements
 			if(action.equals("listGisement")){
-				List<Gisement> listeGisements = Action.getListGisement();
+				List<Object[]> listeGisements = Action.getListGisement();
 				request.setAttribute("gisements", listeGisements);
 				vue = VUE + "listGisement.jsp";
 			}
@@ -70,6 +67,7 @@ public class Mine extends HttpServlet {
 				request.setAttribute("modeles", listeModeles);
 				vue = VUE + "listModele.jsp";
 			}
+			
 		}
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(vue);

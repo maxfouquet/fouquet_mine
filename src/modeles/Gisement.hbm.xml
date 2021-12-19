@@ -13,6 +13,10 @@
         <property name="rendement" type="float">
             <column name="rendement" not-null="true" />
         </property>
+        <set name="equipes" cascade="all" >
+            <key column="id_gisement" />
+            <one-to-many class="modeles.Equipe" />
+        </set>
         <subclass name="modeles.Bouzon" discriminator-value="1">
         	<property name="densite" column="densite" />
 		</subclass>

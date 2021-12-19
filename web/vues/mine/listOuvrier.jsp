@@ -34,8 +34,8 @@
 						    <td><c:out value="${ouvrier[0].getClass().getSimpleName() == 'Robot' ? ouvrier[0].numeroSerie : 'N/A'}"></c:out></td>
 						    <td><c:out value="${ouvrier[0].getClass().getSimpleName() == 'Humain' ? ouvrier[0].salaire : 'N/A'}"></c:out></td>
 						    <td><c:out value="${ouvrier[0].cout()}" /></td>
-						    <td><c:out value="${ouvrier[0].getClass().getSimpleName() == 'Robot' ? ouvrier[1].id : 'N/A'}"></c:out></td>
-						    <td><c:out value="${ouvrier[2].nom}"></c:out></td>
+						    <td><c:out value="${ouvrier[0].getClass().getSimpleName() == 'Robot' ? ouvrier[0].modele.id : 'N/A'}"></c:out></td>
+						    <td><c:out value="${ouvrier[0].equipe.nom}"></c:out></td>
 						</tr>
 					</c:forEach>
 			    </table>

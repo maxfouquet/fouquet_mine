@@ -25,8 +25,8 @@
 						<tr>
 							<td><c:out value="${equipe[0].id}" /></td>
 							<td><c:out value="${equipe[0].nom}" /></td>
-							<td><c:out value="${equipe[1].id}" /></td>
-							<td><c:out value="${equipe[2].nom}" /></td>
+							<td><c:out value="${equipe[0].gisement.id}" /></td>
+							<td><c:out value="${equipe[0].ouvrier.nom}" /></td>
 						    <td><c:out value="${equipe[0].cout()}" /></td>
 						</tr>
 					</c:forEach>

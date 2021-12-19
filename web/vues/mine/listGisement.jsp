@@ -14,7 +14,7 @@
                 <table class="table">
 	              	<thead>
 	              		<tr>
-	              			<th>Nom</th>
+	              			<th>Numéro</th>
 	              			<th>Type</th>
 	              			<th>Date d'affection équipe</th>
 	              			<th>Rendement</th>
@@ -26,14 +26,14 @@
 	              	</thead>
 					<c:forEach items="${requestScope.gisements}" var="gisement">
 						<tr>
-							<td><c:out value="${gisement.id}" /></td>
-							<td><c:out value="${gisement.getClass().getSimpleName()}" /></td>
-							<td><c:out value="${gisement.dateMiseService}" /></td>
-						    <td><c:out value="${gisement.rendement}" /></td>
-						    <td><c:out value="${gisement.getClass().getSimpleName() == 'HzK2' ? gisement.coefficientPurete : 'N/A'}"></c:out></td>
-							<td><c:out value="${gisement.getClass().getSimpleName() == 'Bouzon' ? gisement.densite : 'N/A'}"></c:out></td>
-						    <td><c:out value="${gisement.revenu()}" /></td>
-						    <td><c:out value="${gisement.calculRentabilite()}" /></td>
+							<td><c:out value="${gisement[0].id}" /></td>
+							<td><c:out value="${gisement[0].getClass().getSimpleName()}" /></td>
+							<td><c:out value="${gisement[0].dateMiseService}" /></td>
+						    <td><c:out value="${gisement[0].rendement}" /></td>
+						    <td><c:out value="${gisement[0].getClass().getSimpleName() == 'HzK2' ? gisement[0].coefficientPurete : 'N/A'}"></c:out></td>
+							<td><c:out value="${gisement[0].getClass().getSimpleName() == 'Bouzon' ? gisement[0].densite : 'N/A'}"></c:out></td>
+						    <td><c:out value="${gisement[0].revenu()}" /></td>
+						    <td><c:out value="${gisement[0].calculRentabilite()}" /></td>
 						</tr>
 					</c:forEach>
 			    </table>

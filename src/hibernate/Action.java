@@ -1,20 +1,10 @@
 package hibernate;
 
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.*;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
-import modeles.Bouzon;
-import modeles.Equipe;
-import modeles.Gisement;
-import modeles.Humain;
 import modeles.Modele;
-import modeles.Ouvrier;
-import modeles.Robot;
 
 /**
  * Cette classe comporte toutes les actiosn pour intéragir avec la base de données :
@@ -29,10 +19,10 @@ public class Action {
 	 * Récupère la liste des gisements de la mine
 	 * @return La liste des gisements
 	 */
-	public static List<Gisement> getListGisement(){
+	public static List<Object[]> getListGisement(){
 		Session session = new Config().getSession();
-		List<Gisement> gisements = session.createQuery("from Gisement", Gisement.class).getResultList();
-		return gisements;
+		List<Object[]> results = session.createQuery("from Gisement g left join g.equipes group by g.id order by g.id", Object[].class).getResultList();
+		return results;
 	}
 	
 	/**
@@ -52,19 +42,6 @@ public class Action {
 	public static List<Object[]> getListEquipe(){
 		Session session = new Config().getSession();
 		List<Object[]> results = session.createQuery("from Equipe e left join e.gisement g left join e.ouvrier o order by e.id", Object[].class).getResultList();
-		float coutEquipe = 0;
-		for(Object[] result: results) {
-			Object ouvrier = result[2];
-			if(ouvrier instanceof Robot) {
-				Robot robot = (Robot) ouvrier;
-				coutEquipe += robot.cout();
-			} else {
-				Humain humain = (Humain) ouvrier;
-				coutEquipe += humain.cout();
-			}
-			Equipe equipe = (Equipe) result[0];
-			equipe.setCout(coutEquipe);
-		}
 		return results;
 	}
 	

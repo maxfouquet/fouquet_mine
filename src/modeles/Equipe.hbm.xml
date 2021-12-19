@@ -9,6 +9,10 @@
         <property name="nom" type="string">
             <column name="nom" not-null="true" />
         </property>
+        <set name="ouvriers" cascade="all" >
+            <key column="id_equipe" />
+            <one-to-many class="modeles.Ouvrier" />
+        </set>
         <many-to-one class="modeles.Gisement" name="gisement" column="id_gisement" />
         <many-to-one class="modeles.Ouvrier" name="ouvrier" column="id_ouvrier" />
    </class>

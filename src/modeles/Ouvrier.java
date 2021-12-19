@@ -54,5 +54,9 @@ public class Ouvrier{
     private Equipe equipe;
     public Equipe getEquipe(){ return equipe; }
     public void setEquipe(Equipe equipe) {this.equipe = equipe;}
+    
+	public float cout() {
+		return 0;
+	}
 
 }

@@ -20,9 +20,9 @@
 		<property name="cache.use_query_cache">false</property>
 		
 		<!-- mapping files -->
-		<mapping class="modeles.Gisement"/>
 		<mapping class="modeles.Equipe"/>
 		<mapping class="modeles.Ouvrier"/>
+		<mapping class="modeles.Gisement"/>
 		<mapping class="modeles.Modele"/>
 
 	</session-factory>
