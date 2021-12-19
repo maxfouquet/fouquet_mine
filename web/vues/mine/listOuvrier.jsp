@@ -8,6 +8,12 @@
 		<!-- Main Area -->
 	  	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
 	  	
+	  		<ol class="breadcrumb">
+			  <li class="breadcrumb-item"><a href='<c:url value="/accueil"/>'>Accueil</a></li>
+			  <li class="breadcrumb-item"><a href='<c:url value="/mine"/>'>Mine</a></li>
+			  <li class="breadcrumb-item active">Liste des ouvriers</a></li>
+			</ol>
+	  	
 			<!-- Main Content -->
 		    <div class="container">
 			    <h3>Ouvriers</h3>

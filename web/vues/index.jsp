@@ -6,7 +6,11 @@
 	
 	   <!-- Main Area -->
 	  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-	  
+
+		    <ol class="breadcrumb">
+			  <li class="breadcrumb-item active">Accueil</li>
+			</ol>
+			
 		    <!-- Main Content -->
 	       <div class="container">
 		       <h1>NSY135 - patrons, frameworks, ORM</h1>
