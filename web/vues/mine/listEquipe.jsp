@@ -29,7 +29,7 @@
 	              	</thead>
 					<c:forEach items="${requestScope.equipes}" var="equipe">
 						<tr>
-							<td><c:out value="${equipe[0].id}" /></td>
+							<td><a href='<c:url value="/mine"><c:param name="action" value="equipe"/><c:param name="equipeId" value="${equipe[0].id}"/></c:url>'><c:out value="${equipe[0].id}"/></a></td>
 							<td><c:out value="${equipe[0].nom}" /></td>
 							<td><c:out value="${equipe[0].gisement.id}" /></td>
 							<td><c:out value="${equipe[0].ouvrier.nom}" /></td>

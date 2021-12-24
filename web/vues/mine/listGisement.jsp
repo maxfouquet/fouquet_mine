@@ -32,7 +32,7 @@
 	              	</thead>
 					<c:forEach items="${requestScope.gisements}" var="gisement">
 						<tr>
-							<td><c:out value="${gisement[0].id}" /></td>
+							<td><a href='<c:url value="/mine"><c:param name="action" value="gisement"/><c:param name="gisementId" value="${gisement[0].id}"/></c:url>'><c:out value="${gisement[0].id}"/></a></td>
 							<td><c:out value="${gisement[0].getClass().getSimpleName()}" /></td>
 							<td><c:out value="${gisement[0].dateMiseService}" /></td>
 						    <td><c:out value="${gisement[0].rendement}" /></td>

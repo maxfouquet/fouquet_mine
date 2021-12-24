@@ -11,7 +11,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 
 import hibernate.Action;
+import modeles.Equipe;
+import modeles.Gisement;
 import modeles.Modele;
+import modeles.Ouvrier;
 
 /**
  * Servlet implementation class Hibernate
@@ -66,6 +69,30 @@ public class Mine extends HttpServlet {
 				List<Modele> listeModeles = Action.getListModele();
 				request.setAttribute("modeles", listeModeles);
 				vue = VUE + "listModele.jsp";
+			}
+			
+			// Afficher un gisement
+			if(action.equals("gisement")){
+				int gisementId = Integer.parseInt(request.getParameter("gisementId")); 
+				Gisement gisement = (Gisement) Action.getGisement(gisementId)[0];
+				request.setAttribute("gisement", gisement);
+				vue = VUE + "gisement.jsp";
+			}
+			
+			// Afficher un ouvrier
+			if(action.equals("ouvrier")){
+				int ouvrierId = Integer.parseInt(request.getParameter("ouvrierId")); 
+				Ouvrier ouvrier = (Ouvrier) Action.getOuvrier(ouvrierId)[0];
+				request.setAttribute("ouvrier", ouvrier);
+				vue = VUE + "ouvrier.jsp";
+			}
+			
+			// Afficher une équipe
+			if(action.equals("equipe")){
+				int equipeId = Integer.parseInt(request.getParameter("equipeId")); 
+				Equipe equipe = (Equipe) Action.getEquipe(equipeId)[0];
+				request.setAttribute("equipe", equipe);
+				vue = VUE + "equipe.jsp";
 			}
 			
 		}

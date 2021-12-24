@@ -55,4 +55,34 @@ public class Action {
 		return modeles;
 	}
 	
+	/**
+	 * Récupère un gisement avec son id
+	 * @return Le gisement
+	 */
+	public static Object[] getGisement(int id){
+		Session session = new Config().getSession();
+		Object[] result = session.createQuery("from Gisement g left join g.equipes where g.id = :id group by g.id", Object[].class).setParameter("id", id).getSingleResult();
+		return result;
+	}
+	
+	/**
+	 * Récupère un ouvrier avec son id
+	 * @return L'ouvrier
+	 */
+	public static Object[] getOuvrier(int id){
+		Session session = new Config().getSession();
+		Object[] result = session.createQuery("from Ouvrier o left join o.modele left join o.equipe where o.id = :id", Object[].class).setParameter("id", id).getSingleResult();
+		return result;
+	}
+	
+	/**
+	 * Récupère une équipe avec son id
+	 * @return L'équipe
+	 */
+	public static Object[] getEquipe(int id){
+		Session session = new Config().getSession();
+		Object[] result = session.createQuery("from Equipe e left join e.gisement g left join e.ouvrier where e.id = :id", Object[].class).setParameter("id", id).getSingleResult();
+		return result;
+	}
+	
 }
